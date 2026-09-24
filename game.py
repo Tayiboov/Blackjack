@@ -4,8 +4,8 @@ class Game:
         self.player = player
         self.dealer = dealer
     def hands(self):
-        print("Your hand: ", *self.player.hand.cards, f" (total value: {self.player.hand.total()})")
-        print("Dealer's hand: ", *self.dealer.hand.cards, f" (total value: {self.dealer.hand.total()})")
+        print(f"Your hand: {', '.join(map(str, self.player.hand.cards))} (total value: {self.player.hand.total()})")
+        print(f"Dealer's hand: {', '.join(map(str, self.dealer.hand.cards))} (total value: {self.dealer.hand.total()})")
     def round(self):
         #resetting hands and deck
         self.player.hand = Hand()
@@ -16,7 +16,6 @@ class Game:
         for _ in range(2):
             self.player.hand.hit(self.deck.take())
             self.dealer.hand.hit(self.deck.take())
-            print(self.player.hand.cards[-1])
         #checking natural blackjack
         if self.player.hand.total() == 21 and self.dealer.hand.total() == 21:
             self.hands()
@@ -31,8 +30,9 @@ class Game:
             print("Blackjack! You Lost...")
             return
         while True:
+            print(f"Your hand: {', '.join(map(str, self.player.hand.cards))} (total value: {self.player.hand.total()})")
             if self.player.hit_stand(self.deck):
-                print(self.player.hand.cards[-1])
+                print(f"You got {self.player.hand.cards[-1]} (total value: {self.player.hand.total()})")
                 if self.player.hand.is_burst():
                     self.hands()
                     print("Burst. You Lost...")

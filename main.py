@@ -2,9 +2,9 @@ from models import Player, Dealer
 from game import Game
 player = Player()
 dealer = Dealer()
+game = Game(player, dealer)
 while True:
     break_outer = False
-    game = Game(player, dealer)
     game.round()
     print("Play Again? (Yes/No)")
     while True:
