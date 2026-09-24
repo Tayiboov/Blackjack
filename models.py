@@ -43,7 +43,8 @@ class Player:
         self.hand = Hand()
     def hit_stand(self, deck):
         while True:
-            choice = input("Hit or Stand?")
+            print("Hit or Stand?")
+            choice = input()
             if choice.lower() == "hit":
                 self.hand.hit(deck.take())
                 return True

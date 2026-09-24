@@ -1,7 +1,6 @@
 from models import Deck, Hand
 class Game:
-    def __init__(self, deck, player, dealer):
-        self.deck = deck
+    def __init__(self, player, dealer):
         self.player = player
         self.dealer = dealer
     def hands(self):
